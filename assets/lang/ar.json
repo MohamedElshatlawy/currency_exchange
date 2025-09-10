@@ -1,0 +1,18 @@
+{
+  "currencies": "Currencies",
+  "historical": "Historical",
+  "transfer": "Transfer",
+  "amount": "Amount",
+  "transferred_amount": "Transferred Amount",
+  "select_currency": "Select currency",
+  "indicative_exchange_rate": "Indicative Exchange Rate",
+  "first_currency": "First currency",
+  "second_currency": "Second currency",
+  "no_data_found": "No Data Found",
+  "no_connection_or_data_stored": "No connection or data stored.",
+  "fetch_error": "Fetch Error",
+  "load_cache_failed": "Load Cache Failed",
+  "no_internet_connection":"No Internet Connection",
+  "check_internet":"Please check your internet connection and try again",
+  "ok": "OK"
+}
