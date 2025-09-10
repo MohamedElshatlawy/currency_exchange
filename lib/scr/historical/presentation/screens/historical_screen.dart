@@ -48,6 +48,8 @@ class _HistoricalScreenState extends State<HistoricalScreen> {
               ? Center(
                 child: CircularProgressIndicator(color: AppColors.primaryColor),
               )
+              : currencyState is GenericErrorState
+              ? SizedBox()
               : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

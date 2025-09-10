@@ -48,29 +48,33 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                 controller: widget.viewModel.scrollController,
                 enablePullUp: false,
                 enablePullDown: true,
-                onRefresh: () => widget.viewModel.getCurrenciesData(context: context),
+                onRefresh:
+                    () => widget.viewModel.getCurrenciesData(context: context),
                 onLoading: null,
-                child: ListView.separated(
-                  padding: EdgeInsets.only(
-                    bottom: 50,
-                    left: 14.w,
-                    top: 3,
-                    right: 14.w,
-                  ),
-                  shrinkWrap: true,
-                  physics:
-                      MediaQuery.of(context).viewInsets.bottom == 0
-                          ? null
-                          : const NeverScrollableScrollPhysics(),
-                  itemCount: currencyState.data.currencies!.length,
-                  separatorBuilder: (context, index) {
-                    return SizedBox(height: 16.h);
-                  },
-                  itemBuilder:
-                      (context, index) => CurrencyWidget(
-                        currency: currencyState.data.currencies![index],
-                      ),
-                ),
+                child:
+                    currencyState is GenericErrorState
+                        ? SizedBox()
+                        : ListView.separated(
+                          padding: EdgeInsets.only(
+                            bottom: 50,
+                            left: 14.w,
+                            top: 3,
+                            right: 14.w,
+                          ),
+                          shrinkWrap: true,
+                          physics:
+                              MediaQuery.of(context).viewInsets.bottom == 0
+                                  ? null
+                                  : const NeverScrollableScrollPhysics(),
+                          itemCount: currencyState.data.currencies!.length,
+                          separatorBuilder: (context, index) {
+                            return SizedBox(height: 16.h);
+                          },
+                          itemBuilder:
+                              (context, index) => CurrencyWidget(
+                                currency: currencyState.data.currencies![index],
+                              ),
+                        ),
               );
         },
       ),

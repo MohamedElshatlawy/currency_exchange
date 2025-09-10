@@ -50,6 +50,8 @@ class _TransferScreenState extends State<TransferScreen> {
               ? Center(
                 child: CircularProgressIndicator(color: AppColors.primaryColor),
               )
+              : currencyState is GenericErrorState
+              ? SizedBox()
               : SingleChildScrollView(
                 padding: EdgeInsets.only(
                   bottom: 50,
