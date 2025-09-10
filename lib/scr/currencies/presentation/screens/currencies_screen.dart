@@ -52,7 +52,8 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
                     () => widget.viewModel.getCurrenciesData(context: context),
                 onLoading: null,
                 child:
-                    currencyState is GenericErrorState
+                    currencyState is GenericErrorState ||
+                            currencyState.data.currencies == null
                         ? SizedBox()
                         : ListView.separated(
                           padding: EdgeInsets.only(

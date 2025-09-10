@@ -38,11 +38,8 @@ class CurrenciesViewModel {
     }
   }
 
-  Future<void> getCurrenciesData({
-    required BuildContext context,
-  }) async {
+  Future<void> getCurrenciesData({required BuildContext context}) async {
     currenciesDetails.onLoadingState();
-
     if (!await networkInfo.isConnected) {
       showNoInternetDialog(context);
       await _loadCachedData(context);
@@ -68,9 +65,7 @@ class CurrenciesViewModel {
   Future<void> _loadCachedData(BuildContext context) async {
     try {
       final cached = await DBHelper.getAllCurrencies();
-
       if (cached.isEmpty) {
-
         currenciesDetails.onErrorState(
           Failure(
             AppLocalizations.of(
@@ -92,13 +87,11 @@ class CurrenciesViewModel {
         CurrenciesResponseEntity(currencies: temp),
       );
       scrollController.refreshCompleted();
-
     } catch (e) {
       currenciesDetails.onErrorState(
         Failure(AppLocalizations.of(context)!.translate('load_cache_failed')),
       );
       scrollController.refreshFailed();
-
     }
   }
 

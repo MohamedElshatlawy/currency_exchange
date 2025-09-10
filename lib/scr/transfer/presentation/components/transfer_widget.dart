@@ -126,7 +126,7 @@ class _DropdownMenuItemWidgetState extends State<DropdownMenuItemWidget> {
                     ),
                   ),
                 ),
-                SizedBox(width: 25.w),
+                SizedBox(width: 10.w),
                 Expanded(
                   child: AppTextField(
                     model: AppTextFieldModel(

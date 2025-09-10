@@ -10,13 +10,20 @@ class CurrenciesRepositoryImp implements CurrenciesRepository {
   final CurrenciesRemoteDataSource dataSource;
   final NetworkInfo networkInfo;
 
-  CurrenciesRepositoryImp({required this.dataSource, required this.networkInfo});
+  CurrenciesRepositoryImp({
+    required this.dataSource,
+    required this.networkInfo,
+  });
   @override
   Future<Either<Failure, CurrenciesResponseEntity>> getAllCurrencies() async {
     if (await networkInfo.isConnected) {
-      return await dataSource.getAllCurrencies();
+      try {
+        return await dataSource.getAllCurrencies();
+      } catch (e) {
+        return Left(Failure(e.toString()));
+      }
     } else {
-      throw Exception('No Internet Connection');
+      return Left(Failure('No Internet Connection'));
     }
   }
 }

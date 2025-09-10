@@ -16,12 +16,16 @@ class TransferRepositoryImp implements TransferRepository {
     required String currencies,
   }) async {
     if (await networkInfo.isConnected) {
-      return await dataSource.getExchangeRate(
-        baseCurrency: baseCurrency,
-        currencies: currencies,
-      );
+      try {
+        return await dataSource.getExchangeRate(
+          baseCurrency: baseCurrency,
+          currencies: currencies,
+        );
+      } catch (e) {
+        return Left(Failure(e.toString()));
+      }
     } else {
-      throw Exception('No Internet Connection');
+      return Left(Failure('No Internet Connection'));
     }
   }
 }

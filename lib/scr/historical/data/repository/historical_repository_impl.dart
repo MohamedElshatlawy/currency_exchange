@@ -20,13 +20,17 @@ class HistoricalRepositoryImp implements HistoricalRepository {
     required String date,
   }) async {
     if (await networkInfo.isConnected) {
-      return await dataSource.getHistorical(
-        baseCurrency: baseCurrency,
-        currencies: currencies,
-        date: date,
-      );
+      try {
+        return await dataSource.getHistorical(
+          baseCurrency: baseCurrency,
+          currencies: currencies,
+          date: date,
+        );
+      } catch (e) {
+        return Left(Failure(e.toString()));
+      }
     } else {
-      throw Exception('No Internet Connection');
+      return Left(Failure('No Internet Connection'));
     }
   }
 }
