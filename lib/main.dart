@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:x_transfer/scr/home/presentation/screens/home_screen.dart';
+import 'package:x_transfer/scr/splash/presentation/screens/splash_screen.dart';
 import 'core/base/depindancy_injection.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
                     return supportedLocales.first;
                   },
                   onGenerateRoute: RouteGenerator.generatedRoute,
-                  initialRoute: HomeScreen.routeName,
+                  initialRoute: SplashScreen.routeName,
                 );
               },
             );

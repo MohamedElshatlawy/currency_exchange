@@ -15,6 +15,7 @@ import '../../scr/historical/domain/repository/historical_repository.dart';
 import '../../scr/historical/domain/usecases/historical_usecase.dart';
 import '../../scr/historical/presentation/controller/historical_view_model.dart';
 import '../../scr/home/presentation/controller/home_view_model.dart';
+import '../../scr/splash/presentation/controller/splash_screen_view_model.dart';
 import '../../scr/transfer/data/datasources/remote/transfer_remote_data_source.dart';
 import '../../scr/transfer/data/datasources/remote/transfer_remote_data_source_impl.dart';
 import '../../scr/transfer/data/repository/transfer_repository_impl.dart';
@@ -42,6 +43,7 @@ Future<void> init() async {
   );
 
   /// VIEW MODELS
+  sl.registerFactory(() => SplashScreenViewModel());
   sl.registerFactory(() => HomeViewModel());
   sl.registerFactory(
     () => CurrenciesViewModel(useCase: sl(), networkInfo: sl()),

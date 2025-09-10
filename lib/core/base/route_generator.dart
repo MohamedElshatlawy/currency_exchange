@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../scr/home/presentation/screens/home_screen.dart';
+import '../../scr/splash/presentation/screens/splash_screen.dart';
 
 class RouteGenerator {
   Map<String, dynamic> routs;
   RouteGenerator({required this.routs});
   static Route<dynamic> generatedRoute(RouteSettings settings) {
     switch (settings.name) {
+      case SplashScreen.routeName:
+        return MaterialPageRoute(
+          builder: (_) => SplashScreen(),
+          settings: RouteSettings(name: SplashScreen.routeName),
+        );
       case HomeScreen.routeName:
         return MaterialPageRoute(
           builder: (_) => HomeScreen(),
